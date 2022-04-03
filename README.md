@@ -1,4 +1,4 @@
-# Paper Bug
+# [Paper Bug](https://jeremyong.com/paperbug)
 
 _CONTRIBUTIONS WANTED_
 
