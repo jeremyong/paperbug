@@ -1,10 +1,3 @@
-<iframe width="560" height="315" src="https://www.youtube.com/embed/97JIldpUGE4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>This presentation describes a number of improvements over FSR 2.0's predecessor. It contains a useful overview of heuristics needed to achieve a high quality TAA image, and describes solutions for a number of problems typical in this space:</p>
-<ul class="list-disc">
-<li>Preserving thin features</li>
-<li>Estimating the contribution of a sample in a frame</li>
-<li>Blending the contributions of multiple samples</li>
-<li>Resampling contributions during upscale</li>
-<li>Motion vector dilation based on MV with nearest depth to the current sample</li>
-<li>Avoiding ghosting (best effort) due to disocclusion or shading changes</li>
-</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aKyjQPq5aUU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Two part presentation covering techniques and optimizations used in the FSR1 algorithm, as well as the integration experience into Unity's HDRP.</p>
+<p>Note that FSR1 is superseded by <a href="https://community.amd.com/t5/gaming/announcing-and-first-look-at-amd-fidelityfx-super-resolution-2-0/ba-p/516395">FSR2</a>, with the primary disadvantage of FSR1 being that the input image needs to be anti-aliased already.</p>
