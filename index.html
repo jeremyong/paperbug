@@ -60,9 +60,10 @@
 
 <body class="w-screen">
     <nav class="w-full flex items-center sticky top-0 z-30 h-16 py-4 lg:px-12 shadow shadow-orange-600 bg-white">
-        <div class="lg:flex items-center flex-shrink-0 text-gray-700 mr-16 hidden">
+        <a href="https://github.com/jeremyong/paperbug.git" class="ml-4"><img src="assets/diary-svgrepo-com.svg"
+                class="w-8 h-8 my-auto hover:scale-105" /></a>
+        <div class="lg:flex items-center flex-shrink-0 text-gray-700 ml-2 mr-16 hidden">
             <a href="/" class="flex items-center text-center">
-                <img src="assets/diary-svgrepo-com.svg" class="w-8 h-8 mr-2 my-auto" />
                 <p class="font-bold text-xl tracking-tight my-auto">
                     Paper Bug
                 </p>
@@ -71,12 +72,12 @@
         <div class="menu w-full flex-grow flex items-center justify-around px-3 mx-2">
             <div class="text-gray-600 block w-full">
                 <input name="search" aria-label="search" autocomplete="off" spellcheck="false"
-                    class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm px-2 focus:outline-none w-full"
+                    class="border-2 border-gray-300 bg-white h-10 rounded-lg px-2 focus:outline-none w-full text-base"
                     type="search" placeholder="Fuzzy find" autofocus oninput="fuse_search(this)">
             </div>
         </div>
-        <a href="https://github.com/jeremyong/paperbug.git"><img src="assets/github.svg"
-                class="w-8 h-8 mr-2 my-auto hover:scale-105" /></a>
+        <a href="https://github.com/jeremyong/paperbug.git" class="mr-4"><img src="assets/github.svg"
+                class="w-8 h-8 my-auto hover:scale-105" /></a>
     </nav>
     <div id="results" class="mt-2"></div>
     <div id="entries" class="mt-2"></div>
