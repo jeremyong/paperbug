@@ -103,11 +103,26 @@ window.onload = async () => {
     el.classList.remove('hidden');
     el.id = `entry-${entry.offset}`;
     el.children[0].children[0].innerHTML = entry.title;
+
+    let links;
+    if (entry.url) {
+      links = `<a href="${entry.url}"
+        class="text-blue-600 hover:text-blue-700 transition mb-4">
+        Link
+      </a>`;
+    } else if (entry.urls) {
+      links = entry.urls.map((url, i) => `<a href="${url}"
+      class="text-blue-600 hover:text-blue-700 transition
+        ${i === entry.urls.length - 1 ? "mb-4" : "mb-1"}">
+      Part ${i}</a>`).join('');
+    }
+
+
     el.children[1].innerHTML = `
     <div class="mb-4 flex justify-between">
-    <a href=${entry.url}
-      class="text-blue-600 hover:text-blue-700 transition mb-4">
-      Link</a>
+    <div class="flex flex-col">
+    ${links}
+    </div>
     <div class="flex flex-col text-right max-w-sm">
       <span>${entry.authors.join(', ')}</span>
       <span class="font-mono">${entry.year}</span>
