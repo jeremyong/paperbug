@@ -30,3 +30,7 @@ An ideal entry:
 - mentions the important ideas
 - links any supporting materials needed
 - mentions if a newer paper, result, or code supersedes the contents of the entry
+
+## Why is it called "Paper Bug"?
+
+In Korean, the word for "bug" (벌레) is a suffix sometimes used to indicate that an individual is an enthusiast about a particular topic. Sort of like "bookworm" but it can be applied to other things also in a colloquial setting.
