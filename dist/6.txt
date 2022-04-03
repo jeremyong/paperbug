@@ -1,0 +1,9 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Sswuj7BFjGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Prior to this talk, the primary application of VRS was a forward lit pipeline, since VRS reduces the PS invocation rate. The main idea here is to apply VRS to a deferred lighting pipeline, lighting fewer pixels than there are in the raster, and &quot;hole-filling&quot; the results to each 1x2, 2x1, or 2x2 block (it's mentioned that block sizes larger than 2x2 impacted quality too much).</p>
+<p>One important topic covered in this talk is handling coverage during the hole-filling phase. The abbreviated pipeline described in the talk:</p>
+<ll class="list-decimal">
+<li>Determine which pixel values are duplicated from the VRS buffer (and respect coverage)</li>
+<li>Sparsely light the pixels (e.g. 1x2 and 2x1 blocks are lit at half-rate, 2x2 block at quarter-rate)</li>
+<li>Fill holes</li>
+<li>(Optionally) Each frame, rotate which pixel is lit and leverage TAA to approximate full-rate signal</li>
+</ol>
