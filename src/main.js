@@ -9,7 +9,7 @@ async function toggle_collapse(el) {
   } else {
     if (!el._loaded) {
       const fragment =
-        await (await fetch(`dist/${el._entry.offset}.txt`)).text();
+        await (await fetch(`dist/${el._entry.id}.txt`)).text();
       el.nextElementSibling.innerHTML += fragment;
 
       renderMathInElement(el.nextElementSibling, {

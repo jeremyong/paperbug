@@ -11,6 +11,7 @@ const stat = promisify(fs.stat);
 const md = require('markdown-it');
 const front_matter = require('markdown-it-front-matter');
 const YAML = require('yaml');
+const crypto = require('crypto');
 
 const outputdir = path.resolve(__dirname, '..', 'dist');
 
@@ -30,12 +31,17 @@ const required_fields = ['title', 'year', 'url'];
 
 
 function emit_entry(entry, render) {
+  // Hash entry title as the identifier
+  entry.id = crypto.createHash('md5').update(entry.title).digest('hex')
+    + `_${entry.year}`;
+
   entries.push(entry);
   entry.offset = entries.length - 1;
-  writeFile(path.resolve(outputdir, `${entry.offset}.txt`), render);
+  writeFile(path.resolve(outputdir, `${entry.id}.txt`), render);
 }
 
 function finalize() {
+  entries.sort((a, b) => b.year - a.year);
   writeFile(path.resolve(outputdir, 'index.json'), JSON.stringify(entries));
 }
 
