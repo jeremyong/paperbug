@@ -73,6 +73,7 @@ function fuse_search(el) {
       results.append(...to_add);
     }
   } else if (!entries._shown) {
+    window.previous_results.clear();
     entries.append(...results.children);
     entries.classList.remove('hidden');
     entries._shown = true;
