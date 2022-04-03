@@ -1,0 +1,34 @@
+{
+  "name": "paperbug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build-watch": "onchange \"entries/**/*.md\" -- node scripts/build.js",
+    "tailwind": "tailwindcss -i ./src/main.css -o ./dist/output.css",
+    "tailwind-watch": "tailwindcss -i ./src/main.css -o ./dist/output.css --watch",
+    "server": "live-server",
+    "start": "concurrently --kill-others \"npm run tailwind-watch\" \"npm run build-watch\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremyong/paperbug.git"
+  },
+  "author": "Jeremy Ong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeremyong/paperbug/issues"
+  },
+  "homepage": "https://github.com/jeremyong/paperbug#readme",
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "eslint": "^8.12.0",
+    "live-server": "^1.1.0",
+    "markdown-it": "^12.3.2",
+    "markdown-it-front-matter": "^0.2.3",
+    "onchange": "^7.1.0",
+    "tailwindcss": "^3.0.23",
+    "yaml": "^1.10.2"
+  }
+}

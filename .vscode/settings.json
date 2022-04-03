@@ -1,0 +1,12 @@
+{
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "eslint.format.enable": true,
+    "editor.tabSize": 2,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    }
+}

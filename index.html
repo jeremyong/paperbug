@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Paper Bug</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An indexed compendium of graphics programming papers, articles, blog posts, presentations, and more">
+    <meta name="author" content="Jeremy Ong">
+    <link rel="icon" href="assets/diary-svgrepo-com.svg">
+    <link rel="stylesheet" href="dist/output.css" type="text/css">
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.5.3"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+        integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+        integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p"
+        crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+        integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+        crossorigin="anonymous"></script>
+
+    <script src="src/main.js"></script>
+    <style>
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .entry img {
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .entry ul {
+            padding-top: 1rem;
+            padding-left: 2rem;
+        }
+
+        .entry ol {
+            padding-top: 1rem;
+            padding-left: 2rem;
+        }
+
+        .entry p {
+            padding-top: 1rem;
+        }
+    </style>
+
+</head>
+
+<body class="w-screen">
+    <nav class="w-full flex items-center sticky top-0 z-30 h-16 py-4 lg:px-12 shadow shadow-orange-600 bg-white">
+        <div class="lg:flex items-center flex-shrink-0 text-gray-700 mr-16 hidden">
+            <a href="/" class="flex items-center text-center">
+                <img src="assets/diary-svgrepo-com.svg" class="w-8 h-8 mr-2 my-auto" />
+                <p class="font-bold text-xl tracking-tight my-auto">
+                    Paper Bug
+                </p>
+            </a>
+        </div>
+        <div class="menu w-full flex-grow flex items-center justify-around px-3 mx-2">
+            <div class="text-gray-600 block w-full">
+                <input name="search" aria-label="search" autocomplete="off" spellcheck="false"
+                    class="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm px-2 focus:outline-none w-full"
+                    type="search" placeholder="Fuzzy find" autofocus oninput="fuse_search(this)">
+            </div>
+        </div>
+        <a href="https://github.com/jeremyong/paperbug.git"><img src="assets/github.svg"
+                class="w-8 h-8 mr-2 my-auto hover:scale-105" /></a>
+    </nav>
+    <div id="results" class="mt-2"></div>
+    <div id="entries" class="mt-2"></div>
+
+    <div id="entry-template" class="w-full flex flex-col px-4 hidden">
+        <button class="
+    flex
+    justify-between
+    items-center
+    py-5
+    px-5
+    w-full
+    font-medium
+    text-base text-gray-800 text-left
+    bg-white
+    border
+    rounded-none
+    transition
+    focus:outline-none
+    hover:bg-gray-100 dark:hover:bg-gray-800" onclick="toggle_collapse(this)" aria-expanded="false"
+            aria-controls="collapse0" type="button">
+            <span></span>
+            <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0 transition" fill="currentColor"
+                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </button>
+        <div class="
+            entry
+            w-full px-5 py-4
+            border
+            border-t-0
+            transition
+            overflow-y-auto
+            overflow-x-hidden
+            hidden
+            ">
+        </div>
+    </div>
+</body>
+
+</html>
