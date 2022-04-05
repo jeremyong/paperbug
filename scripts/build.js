@@ -27,7 +27,7 @@ try {
 let entry_count = 1;
 let entries = [];
 
-const required_fields = ['title', 'year', 'url'];
+const required_fields = ['title', 'year'];
 
 
 function emit_entry(entry, render) {
@@ -65,6 +65,11 @@ async function process_entry(entry_path) {
       errors = true;
     }
   })
+
+  if (!entry.url && !entry.urls) {
+    console.log(`Entry ${entry_path} missing "url" or "urls" field!`);
+    errors = true;
+  }
 
   if (!error_found) {
     emit_entry(entry, render);
