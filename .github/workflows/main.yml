@@ -45,7 +45,8 @@ jobs:
         run: |
           git config --global user.email "deploy@donotemail.com"
           git config --global user.name "PaperBug Deploy Action"
-          git checkout -b deploy
+          git fetch origin
+          git checkout deploy
           git add -f dist
           git commit -m 'Automated deploy'
           git push origin deploy
