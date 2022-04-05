@@ -6,8 +6,8 @@
   "scripts": {
     "build": "node scripts/build.js",
     "build-watch": "onchange \"entries/**/*.md\" -- node scripts/build.js",
-    "tailwind": "tailwindcss -i ./src/main.css -o ./dist/output.css",
-    "tailwind-watch": "tailwindcss -i ./src/main.css -o ./dist/output.css --watch",
+    "tailwind": "tailwindcss -m -i ./src/main.css -o ./dist/output.css",
+    "tailwind-watch": "tailwindcss -m -i ./src/main.css -o ./dist/output.css --watch",
     "server": "live-server",
     "start": "concurrently --kill-others \"npm run tailwind-watch\" \"npm run build-watch\" \"npm run server\""
   },
