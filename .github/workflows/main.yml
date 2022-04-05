@@ -43,8 +43,8 @@ jobs:
           git fetch origin
           git checkout deploy
           git reset --hard main
-          npm run tailwind
           npm run build
+          npm run tailwind
           git add -f dist
           git commit -m 'Automated deploy'
           git push origin deploy -f
