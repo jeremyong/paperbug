@@ -54,8 +54,8 @@ async function process_entry(entry_path) {
     entry = YAML.parse(meta);
   }).render(data);
 
-  render = render.replace('<ul>', '<ul class="list-disc">');
-  render = render.replace('<ol>', '<ll class="list-decimal">');
+  render = render.replaceAll('<ul>', '<ul class="list-disc">');
+  render = render.replaceAll('<ol>', '<ll class="list-decimal">');
 
   let error_found = false;
 
