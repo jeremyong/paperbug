@@ -80,6 +80,9 @@ function fuse_search(el) {
   }
 }
 
+const colors = ['red', 'violet', 'slate', 'rose', 'zinc', 'yellow', 'sky', 'amber', 'fuchsia', 'stone', 'orange', 'teal', 'blue', 'lime', 'gray', 'green', 'cyan', 'indigo', 'purple', 'pink']
+const tagColors = new Map();
+
 window.onload = async () => {
   window.index = await (await fetch('dist/index.json')).json();
   window.fuse = new Fuse(window.index, {
@@ -97,12 +100,27 @@ window.onload = async () => {
   window.results = document.getElementById('results');
   const template = document.getElementById('entry-template');
 
+  let tagsArr = []
+  window.index.forEach(entry => {
+    entry.tags && tagsArr.push(...entry.tags)
+  })
+  tagsArr.map((tag, i) => tagColors.get(tag.toLowerCase()) === undefined && tagColors.set(tag.toLowerCase(), colors[i % colors.length]))
+
   window.index.forEach(entry => {
     const el = template.cloneNode(true);
     entry.el = el;
     el.classList.remove('hidden');
     el.id = `entry-${entry.offset}`;
-    el.children[0].children[0].innerHTML = entry.title;
+    el.children[0].children[0].children[0].innerHTML = entry.title;
+
+    let tags;
+    if (entry.tags) {
+      tags = entry.tags.map(tag => {
+        const color = tagColors.get(tag.toLowerCase())
+        return `<span class="inline-flex items-center justify-center px-2 py-1 ml-2 text-xs font-bold leading-none text-${color}-100 bg-${color}-400 rounded-full">${tag}</span>`
+      }).join('')
+      el.children[0].children[0].insertAdjacentHTML('beforeend', tags)
+    }
 
     let links;
     if (entry.url) {
