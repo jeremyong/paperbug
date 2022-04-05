@@ -5,6 +5,11 @@ authors:
 - Kevin Myers
 year: 2021
 conference: GDC
+tags:
+- Bindless
+- Shadows
+- Raytracing
+- Denoising
 ---
 
 Historically, shadows are often spoken about with respect to a "shadow atlas," meaning that a number of shadow maps for lights in the scene are packed together in a larger atlas. This talk points out quite correctly that with bindless texture arrays, you can free yourself of the difficulties associated with addressing textures within atlases. This flexible addressing scheme means you can allocate maps with arbitrary resolution based on the detail needed.
