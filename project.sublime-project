@@ -1,0 +1,39 @@
+{
+    "folders":
+    [
+        {
+            "path": "entries/",
+            "name": "entries"
+        },
+        {
+            "path": "src",
+            "name": "src"
+        },
+        {
+            "path": "scripts",
+            "name": "scripts"
+        }
+    ],
+    "settings":
+    {
+        "trim_trailing_white_space_on_save": true,
+        "ensure_newline_at_eof_on_save": true
+    },
+    "build_systems":
+    [
+        {
+            "name": "Run Local Server",
+            "cmd": ["npm", "run", "start"],
+            "windows": {
+                "cmd": ["npm.cmd", "run", "start"]
+            }
+        },
+        {
+            "name": "Kill Local Server",
+            "cmd": ["killall", "node"],
+            "windows": {
+                "cmd": ["taskkill", "/f", "/im", "node.exe"]
+            }
+        }
+    ]
+}
