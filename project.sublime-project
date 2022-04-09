@@ -24,8 +24,10 @@
         {
             "name": "Run Local Server",
             "cmd": ["npm", "run", "start"],
+            "cancel": ["killall", "node"],
             "windows": {
-                "cmd": ["npm.cmd", "run", "start"]
+                "cmd": ["npm.cmd", "run", "start"],
+                "cancel": ["taskkill", "/f", "/im", "node.exe"]
             }
         },
         {
