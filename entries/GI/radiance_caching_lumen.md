@@ -8,7 +8,6 @@ conference: SIGGRAPH
 tags:
   - Global Illumination
   - GI
-  - Real-Time GI
   - Raytracing
 ---
 

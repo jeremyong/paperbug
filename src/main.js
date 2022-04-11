@@ -60,7 +60,7 @@ function fuse_search(el) {
 
     window.previous_results.forEach((previous) => {
       if (!next_indices.has(previous)) {
-        to_remove.push(window.index[previous].el);
+        to_remove.push(window.index.entries[previous].el);
       }
     });
     window.previous_results = next_indices;
@@ -80,12 +80,9 @@ function fuse_search(el) {
   }
 }
 
-const colors = ['red', 'violet', 'slate', 'rose', 'zinc', 'yellow', 'sky', 'amber', 'fuchsia', 'stone', 'orange', 'teal', 'blue', 'lime', 'gray', 'green', 'cyan', 'indigo', 'purple', 'pink']
-const tagColors = new Map();
-
 window.onload = async () => {
   window.index = await (await fetch('dist/index.json')).json();
-  window.fuse = new Fuse(window.index, {
+  window.fuse = new Fuse(window.index.entries, {
     isCaseSensitive: false,
     includeScore: false,
     shouldSort: true,
@@ -100,26 +97,26 @@ window.onload = async () => {
   window.results = document.getElementById('results');
   const template = document.getElementById('entry-template');
 
-  let tagsArr = []
-  window.index.forEach(entry => {
-    entry.tags && tagsArr.push(...entry.tags)
-  })
-  tagsArr.map((tag, i) => tagColors.get(tag.toLowerCase()) === undefined && tagColors.set(tag.toLowerCase(), colors[i % colors.length]))
-
-  window.index.forEach(entry => {
+  window.index.entries.forEach(entry => {
     const el = template.cloneNode(true);
     entry.el = el;
     el.classList.remove('hidden');
     el.id = `entry-${entry.offset}`;
     el.children[0].children[0].children[0].innerHTML = entry.title;
 
-    let tags;
+    let tags = [];
     if (entry.tags) {
-      tags = entry.tags.map(tag => {
-        const color = tagColors.get(tag.toLowerCase())
-        return `<span class="inline-flex items-center justify-center px-2 py-1 ml-2 text-xs font-bold leading-none text-${color}-100 bg-${color}-400 rounded-full">${tag}</span>`
-      }).join('')
-      el.children[0].children[0].insertAdjacentHTML('beforeend', tags)
+      tags = entry.tags.map((tag, i) => {
+        const color = window.index.tags[tag];
+        const node = document.getElementById('tag-template').cloneNode(false);
+        node.id = '';
+        node.classList.remove('hidden');
+        node.classList.add('inline-flex');
+        node.style.backgroundColor =
+          `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+        node.innerHTML = tag;
+        return node;
+      });
     }
 
     let links;
@@ -139,6 +136,7 @@ window.onload = async () => {
     el.children[1].innerHTML = `
     <div class="mb-4 flex justify-between">
     <div class="flex flex-col">
+    <div class="flex flex-wrap"></div>
     ${links}
     </div>
     <div class="flex flex-col text-right max-w-sm">
@@ -147,6 +145,7 @@ window.onload = async () => {
     </div>
     </div>
     `;
+    el.children[1].children[0].children[0].children[0].prepend(...tags);
     el.children[0]._entry = entry;
     el.children[0]._shown = false;
 

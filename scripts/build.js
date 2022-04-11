@@ -12,6 +12,7 @@ const md = require('markdown-it');
 const front_matter = require('markdown-it-front-matter');
 const YAML = require('yaml');
 const crypto = require('crypto');
+const { okhsl_to_srgb, okhsv_to_srgb } = require('./color_conversion');
 
 const outputdir = path.resolve(__dirname, '..', 'dist');
 
@@ -29,6 +30,29 @@ let entries = [];
 
 const required_fields = ['title', 'year'];
 
+function fnv1a(value) {
+  // eslint-disable-next-line max-len
+  // https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function#FNV-1a_hash
+  let seed = 4;
+  for (let i = 0; i !== value.length; ++i) {
+    seed = ((seed * 16777619) ^ value.charCodeAt(i)) >>> 0;
+  }
+  // JS bitwise operations are interpreted as signed, so force an unsigned
+  // interpretation
+  return seed >>> 0;
+}
+
+function tag_to_rgb(tag) {
+  const hash = fnv1a(tag.toLowerCase());
+  let color = okhsl_to_srgb(hash / 0xffffffff, 0.5, 0.7);
+  color = color.map(v => Math.round(v));
+  return color;
+}
+
+// Map from tags to colors
+const tags = {
+  '...': [225, 225, 225]
+};
 
 function emit_entry(entry, render) {
   // Hash entry title as the identifier
@@ -37,12 +61,33 @@ function emit_entry(entry, render) {
 
   entries.push(entry);
   entry.offset = entries.length - 1;
+
+  if (!entry.tags) {
+    console.log(`Entry ${entry.title} missing tags!`);
+    return;
+  }
+
+  entry.tags = entry.tags.map(tag => tag.toUpperCase());
+  entry.tags = entry.tags.sort((a, b) => a < b ? -1 : 1);
+
+  for (let i = 0; i !== entry.tags.length; ++i) {
+    if (!tags[entry.tags[i]]) {
+      tags[entry.tags[i]] = tag_to_rgb(entry.tags[i]);
+    }
+  }
+  console.log(entry.tags, tags);
+
   writeFile(path.resolve(outputdir, `${entry.id}.txt`), render);
 }
 
 function finalize() {
   entries.sort((a, b) => b.year - a.year);
-  writeFile(path.resolve(outputdir, 'index.json'), JSON.stringify(entries));
+
+  const data = {
+    entries,
+    tags
+  };
+  writeFile(path.resolve(outputdir, 'index.json'), JSON.stringify(data));
 }
 
 async function process_entry(entry_path) {
