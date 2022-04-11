@@ -1,10 +1,13 @@
-async function toggle_collapse(el) {
+async function toggle_collapse(el, set_hash) {
   if (el._shown) {
     el.children[1].classList.add('rotate-180');
     el.nextElementSibling.classList.add('hidden');
     el._shown = false;
     if (window.shown_el === el) {
       window.shown_el = null;
+    }
+    if (set_hash) {
+      history.pushState(null, null, '#');
     }
   } else {
     if (!el._loaded) {
@@ -26,6 +29,9 @@ async function toggle_collapse(el) {
     el.children[1].classList.remove('rotate-180');
     el.nextElementSibling.classList.remove('hidden');
     el._shown = true;
+    if (set_hash) {
+      history.pushState(null, null, `#${el._entry.id}`);
+    }
 
     if (window.shown_el) {
       window.shown_el.children[1].classList.add('rotate-180');
@@ -101,12 +107,12 @@ window.onload = async () => {
     const el = template.cloneNode(true);
     entry.el = el;
     el.classList.remove('hidden');
-    el.id = `entry-${entry.offset}`;
+    el.id = `entry-${entry.id}`;
     el.children[0].children[0].children[0].innerHTML = entry.title;
 
     let tags = [];
     if (entry.tags) {
-      tags = entry.tags.map((tag, i) => {
+      tags = entry.tags.map((tag) => {
         const color = window.index.tags[tag];
         const node = document.getElementById('tag-template').cloneNode(false);
         node.id = '';
@@ -151,4 +157,27 @@ window.onload = async () => {
 
     entries.appendChild(el);
   });
+
+  if (document.location.hash.length > 1) {
+    hash_navigate();
+  }
+}
+
+function hash_navigate() {
+  const el = document.getElementById(
+    `entry-${document.location.hash.substring(1)}`);
+  if (el && el !== window.shown_el) {
+    toggle_collapse(el.children[0], false);
+    el.scrollIntoView({ block: 'center' });
+  }
+}
+
+window.onhashchange = () => {
+  if (document.location.hash.length === 0) {
+    if (window.shown_el) {
+      toggle_collapse(window.shown_el, false);
+    }
+  } else {
+    hash_navigate();
+  }
 }
