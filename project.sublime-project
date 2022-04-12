@@ -28,7 +28,7 @@
             "cmd": ["npm", "run", "start"],
             "cancel": ["killall", "node"],
             "windows": {
-                "cmd": ["npm.cmd", "run", "start"],
+                "cmd": ["C:\\Program Files\\nodejs\\npm.cmd", "run", "start"],
                 "cancel": ["taskkill", "/f", "/im", "node.exe"]
             }
         },
