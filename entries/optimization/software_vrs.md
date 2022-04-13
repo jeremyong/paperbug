@@ -13,9 +13,9 @@ tags:
 
 ![](https://advances.realtimerendering.com/s2020/index_files/image010.jpg)
 
-Presents the approach to variable rate shading used by Activision in Call of Duty: Modern Warfare, which does not leverage hardware functionality for VRS
+Presents the software implementation of variable rate shading (VRS) used by Activision in Call of Duty: Modern Warfare, which does not leverage or require the hardware functionality for VRS that's available through D3D12 and Vulkan.
 
 * Provides an overview of hardware VRS available in recent GPUs, which can set pixel shading rate for 8x8 tiles in screen space as well as per-primitive or per-draw
-* Describes how hardware VRS can suffer from quad overshading due to effectively decreasing triangle sze in screen space
-* Presents an alternative approach that stores swizzled/intereaved samples in MSAA buffers, where shading rate can be varied at a fine granularity by using the stencil buffer to cull MSAA subsamples
-* Describes a full implementation of the alternative software approach, including temporal feedback for determing shading rate and final full-resolution reconstruction
+* Describes how hardware VRS can suffer from quad overshading (poor quad occupancy) due to effectively decreasing triangle size in screen space
+* Presents an alternative approach that stores swizzled/intereaved samples in MSAA buffers, where shading rate can be varied at a fine granularity by using the stencil buffer to cull MSAA subsamples. This approach also does not suffer from the same issues with quad occupancy.
+* Describes a full implementation of the alternative software approach, including a screen-space analysis pass that dynamically determines the appropriate shading rate based a reprojection of the previous frame
