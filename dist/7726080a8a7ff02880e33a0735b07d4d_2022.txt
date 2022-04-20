@@ -1,0 +1,10 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/97JIldpUGE4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>This presentation describes a number of improvements over FSR 2.0's predecessor. It contains a useful overview of heuristics needed to achieve a high quality TAA image, and describes solutions for a number of problems typical in this space:</p>
+<ul class="list-disc">
+<li>Preserving thin features</li>
+<li>Estimating the contribution of a sample in a frame</li>
+<li>Blending the contributions of multiple samples</li>
+<li>Resampling contributions during upscale</li>
+<li>Motion vector dilation based on MV with nearest depth to the current sample</li>
+<li>Avoiding ghosting (best effort) due to disocclusion or shading changes</li>
+</ul>

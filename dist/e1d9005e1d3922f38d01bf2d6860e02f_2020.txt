@@ -1,0 +1,4 @@
+
+<p>Demonstrates the use of the ReSTIR reservoir sampling technique to interactively sample direct lighting from thousands to millions of dynamic emissive triangles.</p>
+<p>Leverages a biased estimator to further improve the results as shown below with a 35-65x speedup (albeit with some energy loss).</p>
+<p><img src="https://research.nvidia.com/sites/default/files/publications/piratesTeaser_nvrSite_scaled.png" alt="teaser"></p>

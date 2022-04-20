@@ -1,0 +1,20 @@
+
+<p><img src="https://advances.realtimerendering.com/s2011/index_files/image022.png" alt=""></p>
+<p>This presentation shows a technique for rendering skin with subsurface scattering that's compatible with a forward renderer.</p>
+<p>Key takeaways:</p>
+<ul class="list-disc">
+<li>The technique can approximate scattering from punctual light source directly in a pixel/fragment shader with a combination of loopup textures, normal map mip biasing, and mesh curvature</li>
+<li>Does not rely on <a href="https://developer.nvidia.com/gpugems/gpugems3/part-iii-rendering/chapter-14-advanced-techniques-realistic-real-time-skin">texture-space rendering</a>, <a href="http://advances.realtimerendering.com/s2018/Efficient%20screen%20space%20subsurface%20scattering%20Siggraph%202018.pdf">screen-space scattering</a>, or ray tracing</li>
+<li>The scattering effect utilizes a pre-computed 3D lookup texture to approximate scattering for a single skin type, as well as an additional 2D lookup texture for approximating scattering across a shadow penumbra</li>
+<li>The technique relies on pixel shader derivatives to compute the local surface curvature, which automatically adapts to mesh deformation but can result in visible discontinuities at triangle edges.</li>
+<li>Like most real-time techniques for subsurface scattering, it does not handle translucency from light that enters a surface and then exits on the other side (such as light scattering through the ears)</li>
+</ul>
+<p>This technique was also presented as an article in GPU Pro 2.</p>
+<p>Related articles:</p>
+<ul class="list-disc">
+<li><a href="https://blog.selfshadow.com/publications/s2013-shading-course/rad/s2013_pbs_rad_notes.pdf">https://blog.selfshadow.com/publications/s2013-shading-course/rad/s2013_pbs_rad_notes.pdf</a></li>
+<li><a href="http://c0de517e.blogspot.com/2011/09/mathematica-and-skin-rendering.html">http://c0de517e.blogspot.com/2011/09/mathematica-and-skin-rendering.html</a></li>
+<li><a href="http://simonstechblog.blogspot.com/2015/02/pre-integrated-skin-shading.html">http://simonstechblog.blogspot.com/2015/02/pre-integrated-skin-shading.html</a></li>
+<li><a href="https://therealmjp.github.io/posts/sss-intro/">https://therealmjp.github.io/posts/sss-intro/</a></li>
+<li><a href="https://therealmjp.github.io/posts/sss-sg/">https://therealmjp.github.io/posts/sss-sg/</a></li>
+</ul>

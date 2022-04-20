@@ -1,0 +1,13 @@
+
+<p>This is a two part series describing the problem statement and possible solutions for shader permutations.</p>
+<p>The problem statement is described in pretty gory detail. Shaders permeate the alpha and omega of graphics programming, affecting iteration time, performance, load times, memory and more. The discussion of &quot;what variants to even compile&quot; is a multi-faceted problem (shader size, compile times, register pressure, ILP, feature requirements, and more).</p>
+<p>The solution described at Ready At Dawn is to rely on uber-shaders with dynamic branching for all available options and swap in specialized shaders as they become ready. Specialization constants as provided in Vulkan and Metal are discussed as a possible avenue for compiling static branches at runtime, with the caveat that it's unclear whether CSE and CF actually will occur (common sub-expression elimination + constant folding). A nice table of practical options is provided also (with discussion):</p>
+<ul class="list-disc">
+<li>Compile what you need</li>
+<li>Specialize at runtime</li>
+<li>Cache material evaluation</li>
+<li>Just branch/loop at runtime (especially for uniform branches)</li>
+<li>Split the pipeline (e.g. deferred rendering)</li>
+<li>Link offline</li>
+<li>Dynamic function calls (only works with RT)</li>
+</ul>

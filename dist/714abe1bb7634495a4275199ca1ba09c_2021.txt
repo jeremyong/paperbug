@@ -1,0 +1,10 @@
+
+<p>Historically, shadows are often spoken about with respect to a &quot;shadow atlas,&quot; meaning that a number of shadow maps for lights in the scene are packed together in a larger atlas. This talk points out quite correctly that with bindless texture arrays, you can free yourself of the difficulties associated with addressing textures within atlases. This flexible addressing scheme means you can allocate maps with arbitrary resolution based on the detail needed.</p>
+<p>Other main takeaways addressed in this talk include:</p>
+<ul class="list-disc">
+<li>Some iteration was done to the static shadow cache solution employed in previous activision titles (<a href="https://www.activision.com/cdn/research/2017_DD_Rendering_of_COD_IW.pdf">link</a>) with extensions made when bindless is available</li>
+<li>Compared to previous titles, offline baking is only done for the 3rd split</li>
+<li>Shadow map compression and decompression</li>
+<li>Depth-aware filtering (dilated PCF) to provide contact hardening</li>
+<li>Usage of ray-tracing/denoising to render shadows (transparencies use SM fallback, spatial-temporal denoiser from NVIDIA)</li>
+</ul>

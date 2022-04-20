@@ -1,0 +1,11 @@
+
+<p><img src="https://advances.realtimerendering.com/s2020/index_files/image011.gif" alt=""></p>
+<p>This presentation covers several rendering techniques used to optimize performance and implement new features for the idTech 7 engine used for Doom: Eternal</p>
+<ul class="list-disc">
+<li>A compute-based software rasterizer was written to improve cluster culling granularity for lights and decals</li>
+<li>A new technique called &quot;geometry decals&quot; was used to allow for many tiny decals to be added to meshes</li>
+<li>Geometry caches were generated from Alembic caches to handle complex vertex animations</li>
+<li>A new system was implemented to blend up to 4 material stacks within a shader using vertex weights and height maps</li>
+<li>A compute-based geometry processing pipeline was used to perform frustum and occlusion culling of triangles, and also batch together small models into a single draw</li>
+<li>Finally, a water rendering system was developed that included displacement, screen-space reflections, dynamic hit effects, caustics, and flowing surfaces</li>
+</ul>

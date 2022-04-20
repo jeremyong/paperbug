@@ -1,0 +1,3 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aKyjQPq5aUU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Two part presentation covering techniques and optimizations used in the FSR1 algorithm, as well as the integration experience into Unity's HDRP.</p>
+<p>Note that FSR1 is superseded by <a href="https://community.amd.com/t5/gaming/announcing-and-first-look-at-amd-fidelityfx-super-resolution-2-0/ba-p/516395">FSR2</a>, with the primary disadvantage of FSR1 being that the input image needs to be anti-aliased already.</p>

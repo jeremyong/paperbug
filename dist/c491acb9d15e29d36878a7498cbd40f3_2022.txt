@@ -1,0 +1,11 @@
+
+<p><img src="https://pbs.twimg.com/media/FOiwlP-VgAQQ3Sh?format=png" alt=""></p>
+<p>Describes how the rendering of alpha-tested foliage was optimized by using a deferred texturing renderer combined with a software VRS system.</p>
+<ul class="list-disc">
+<li>Dense alpha-tested foliage suffered from low pixel shader quad occupancy, and the depth prepass requires transforming vertices twice</li>
+<li>A visibility buffer approach outputs primitive IDs to a render target that can be used to shader during a compute shader pass, avoid quad occupancy issues</li>
+<li>Pixels within 128x128 tiles are binned by shader program and launched as complete waves using multiple indirect dispatches</li>
+<li>A pipelined system for filling a ring buffer with transformed vertices is used as a cache for the shading passes</li>
+<li>Shading rate is also encoded in the visibility buffer, which feeds into a compute-based VRS system for scheduling and broadcasting shading results</li>
+</ul>
+<p>A video recording is available on the GDC Vault with paid membersip.</p>

@@ -1,0 +1,8 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/snXTGrjfOvQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>This talk presents work to implement precomputed GI large-scale maps used for Call of Duty: Warzone</p>
+<ul class="list-disc">
+<li>Discusses the probe-based approach used for storing GI data throughout the map, including an warped distribution for adaptive placement of probes along the terrain</li>
+<li>Presents a novel compression scheme called &quot;Moving Basis Decomposition&quot; for reducing the storage space for GI by a ratio of 44:1</li>
+<li>Uses a simple technique to prevent leaking between probes in the exterior and interior of buildings</li>
+<li>Discusses approaches to contraining spherical harmonics light probe data to avoid ringing artifacts</li>
+</ul>

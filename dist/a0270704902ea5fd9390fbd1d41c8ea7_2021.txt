@@ -1,0 +1,3 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NoTUzzmxPo0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>When deciding how to rasterize meshes, there are quite a number of degrees of freedom. This talk summarizes a few options available, from a full forward-plus style renderer, to a fully deferred renderer, to the usage of an &quot;intermediate&quot; approach using a visibility buffer.</p>
+<p>The talk covers an opinionated approach to meshlet clustering, index packing, culling, and other details for laying down the visibility buffer with an eye toward variable rate shading done in software.</p>

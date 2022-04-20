@@ -1,0 +1,9 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Uea9Wq1XdA4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>GIBS is a real-time raytracing solution for global illumination. The talk describes:</p>
+<ul class="list-disc">
+<li>The acceleration structure used to cache surfel data</li>
+<li>The use of screen-space to keep memory costs predictable</li>
+<li>Handling dynamic/skinned geometry and transparency</li>
+<li>Spatio-temporal filtering</li>
+<li>Ray guiding and ray binning</li>
+</ul>

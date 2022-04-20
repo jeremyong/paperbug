@@ -1,0 +1,8 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0TzgFwDmbGg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Presents ongoing research to develop a large-scale terrain renderer for tje Unity game engine</p>
+<ul class="list-disc">
+<li>Presents a novel adaptive tessellation scheme that's run entirely on the GPU</li>
+<li>Utilizes a recursive subdivision scheme known as &quot;Longest Edge Bisection&quot; that divides a triangle along its longest edge and effectively forms a binary tree</li>
+<li>Does not utilize tessellation shader stages, only uses compute and vertex shaders</li>
+<li>Discusses the integration into Unity</li>
+</ul>

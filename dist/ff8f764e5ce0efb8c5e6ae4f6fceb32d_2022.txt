@@ -1,0 +1,7 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ML0YC77bSOc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Major takeaways:</p>
+<ul class="list-disc">
+<li>Explores different memory heaps available</li>
+<li>In particular, covers &quot;aperture memory&quot; and SAM (smart access memory) as device-local memory that is also host-visible (exposed in Vulkan)</li>
+<li>Covers some common pitfalls, such as reading back write-combined (WC) memory</li>
+</ul>
